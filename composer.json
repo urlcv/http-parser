@@ -1,0 +1,43 @@
+{
+    "name": "urlcv/http-parser",
+    "description": "Frontend HTTP request/response parser for URLCV Tools — paste raw HTTP for structured breakdown and security triage.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "http",
+        "parser",
+        "raw-http",
+        "headers",
+        "security",
+        "burp",
+        "pentest",
+        "urlcv"
+    ],
+    "homepage": "https://urlcv.com/tools/http-parser",
+    "authors": [
+        {
+            "name": "URLCV",
+            "homepage": "https://urlcv.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "URLCV\\HttpParser\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "URLCV\\HttpParser\\Laravel\\HttpParserServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}
