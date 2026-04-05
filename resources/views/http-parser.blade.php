@@ -127,13 +127,13 @@
             </div>
 
             {{-- Triage --}}
-            <div class="rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/80 dark:bg-amber-950/30 p-4" x-show="warnings.length > 0">
+            <div class="rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/80 dark:bg-amber-950/30 p-4" x-show="result.warnings.length > 0">
                 <h2 class="text-sm font-semibold text-amber-950 dark:text-amber-100 mb-2">Security triage (heuristic)</h2>
                 <p class="text-xs text-amber-900/80 dark:text-amber-200/80 mb-3">
                     Flags are based only on what appears in your paste. Wording is intentionally cautious — review recommended where noted.
                 </p>
                 <ul class="space-y-3">
-                    <template x-for="(w, idx) in warnings" :key="idx">
+                    <template x-for="(w, idx) in result.warnings" :key="idx">
                         <li class="text-sm border-l-2 border-amber-400 dark:border-amber-600 pl-3">
                             <div class="font-medium text-amber-950 dark:text-amber-50" x-text="w.title"></div>
                             <div class="text-amber-900/90 dark:text-amber-100/90 mt-0.5" x-text="w.detail"></div>
@@ -897,7 +897,6 @@ function httpParser() {
         raw: '',
         parseError: null,
         result: null,
-        warnings: [],
         normalizedMessage: '',
         secPath: true,
         secQuery: true,
@@ -940,17 +939,14 @@ function httpParser() {
             this.raw = '';
             this.parseError = null;
             this.result = null;
-            this.warnings = [];
         },
 
         parse() {
             this.parseError = null;
             this.result = null;
-            this.warnings = [];
             try {
                 var parsed = window.httpParserLib.parseMessage(this.raw);
                 var enriched = window.httpParserLib.enrich(parsed);
-                this.warnings = enriched.warnings;
                 this.normalizedMessage = enriched.normalizedMessage;
                 this.result = enriched;
             } catch (e) {
