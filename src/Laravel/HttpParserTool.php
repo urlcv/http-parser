@@ -15,12 +15,12 @@ class HttpParserTool implements ToolInterface
 
     public function name(): string
     {
-        return 'HTTP Request Parser';
+        return 'HTTP Parser';
     }
 
     public function summary(): string
     {
-        return 'Paste a raw HTTP request or response — get a structured breakdown and quick security triage in your browser.';
+        return 'Paste a raw HTTP request or response for local parsing, structured breakdowns, and cautious security review notes.';
     }
 
     public function descriptionMd(): ?string
@@ -34,7 +34,7 @@ Paste traffic copied from **Burp**, **browser devtools**, **curl**, or logs. Thi
 
 - **Requests:** method, path, query string, HTTP version, host, headers, cookies, auth headers, body, JSON or form fields when applicable
 - **Responses:** status line and code, headers, `Set-Cookie` lines, content type, body preview, JSON fields when applicable
-- **Security triage:** possible issues visible in the message — missing security headers (responses), cookie flags, CORS, CSP hints, auth material in headers/body, duplicate parameters, ID-like segments, version leakage, and similar — phrased as *worth checking*, not certainties
+- **Security triage:** only what is visible in the pasted message — cookie flags, CORS/CSP hints, auth material, duplicate parameters, ID-like segments, version leakage, and similar — phrased as *worth checking*, not certainties
 
 ### What this is not
 

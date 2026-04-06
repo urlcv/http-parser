@@ -8,13 +8,15 @@ Browser-side raw HTTP request and response parser with structured breakdown and 
 
 ## What it does
 
-Paste a **raw HTTP request** or **raw HTTP response** (e.g. from Burp Suite, browser devtools, or a `curl` transcript). Parsing runs **entirely in the browser** — nothing is uploaded.
+Paste a **raw HTTP request** or **raw HTTP response** (e.g. from Burp Suite, browser devtools, logs, or a `curl -v` transcript). Parsing runs **entirely in the browser** — nothing is uploaded.
 
 You get:
 
 - **Requests:** method, path, query string, version, host, headers, cookies, authorization (display-masked), content type, body, JSON or form fields when applicable  
 - **Responses:** status line and code, headers, `Set-Cookie` lines, content type, body preview, JSON when applicable  
-- **Heuristic triage:** missing common security headers on responses, cookie flags, CORS/CSP hints, token-like patterns in the body, duplicate query parameters, long numeric or UUID-like path segments, version leakage via headers — phrased cautiously (*worth checking*, *review recommended*)
+- **Heuristic triage:** cookie flags, CORS/CSP hints, token-like patterns in the body, duplicate query parameters, long numeric or UUID-like path segments, version leakage via headers, and a small set of context-sensitive missing-header checks — phrased cautiously (*worth checking*, *review recommended*)
+- **Soft failure handling:** folded headers, invalid header lines ignored with notes, wrapper lines before the HTTP start line skipped when possible
+- **Large paste safeguards:** preview truncation and skipped pretty-printing when payloads are big enough to hurt responsiveness
 
 This is **not** a scanner, fuzzer, or exploit tool — only a parser and manual review aid.
 
@@ -54,7 +56,7 @@ The package provides:
 
 ## Privacy
 
-All parsing happens client-side in the user’s browser. Do not paste live secrets into shared machines; clear the page when finished.
+All parsing happens client-side in the user’s browser. The UI promise should stay accurate: no pasted traffic is sent to URLCV or third parties. Do not paste live secrets into shared machines; clear the page when finished.
 
 ---
 
