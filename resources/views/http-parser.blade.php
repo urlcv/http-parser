@@ -6,15 +6,15 @@
     class="space-y-6"
     x-cloak
 >
-    <div class="rounded-xl border border-blue-200 bg-blue-50 dark:border-blue-900/50 dark:bg-blue-950/40 px-4 py-3 text-sm text-blue-900 dark:text-blue-100">
-        <p class="font-medium">Runs locally in your browser</p>
-        <p class="mt-1 text-blue-800/90 dark:text-blue-200/90">
+    <div class="rounded-xl border border-blue-300 bg-blue-100/90 px-4 py-3 text-sm text-blue-950 shadow-sm">
+        <p class="font-semibold text-blue-950">Runs locally in your browser</p>
+        <p class="mt-1.5 text-blue-900 leading-relaxed">
             Pasted HTTP is parsed with JavaScript on this page only — it is not uploaded to URLCV or any third party. Clear sensitive data when you are done.
         </p>
     </div>
 
     <div>
-        <label for="hp-raw" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+        <label for="hp-raw" class="block text-sm font-semibold text-gray-900 mb-2">
             Raw HTTP message
         </label>
         <textarea
@@ -22,7 +22,7 @@
             x-model="raw"
             rows="14"
             placeholder="Paste a full raw HTTP request or response…&#10;&#10;Example start lines:&#10;GET /api/resource HTTP/1.1&#10;HTTP/1.1 200 OK"
-            class="block w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm font-mono bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-y min-h-[12rem]"
+            class="block w-full rounded-lg border-2 border-gray-400 bg-white px-3 py-2.5 text-sm font-mono text-gray-950 placeholder:text-gray-600 shadow-inner text-[15px] leading-relaxed focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 resize-y min-h-[12rem] dark:bg-white dark:text-gray-950 dark:border-gray-400 dark:placeholder:text-gray-600"
         ></textarea>
         <div class="mt-3 flex flex-wrap gap-2">
             <button
